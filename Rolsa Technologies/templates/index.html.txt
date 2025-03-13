@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="carousel">
+    <img src="{{ url_for('static', filename='image1.jpg') }}" alt="Image 1">
+    <img src="{{ url_for('static', filename='image2.jpg') }}" alt="Image 2">
+    <img src="{{ url_for('static', filename='image3.jpg') }}" alt="Image 3">
+    <img src="{{ url_for('static', filename='image4.jpg') }}" alt="Image 4">
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Carbon Footprint Calculator</h2>
+<form method="POST">
+    <label>Do you drive to work?</label>
+    <input type="radio" name="drives_to_work" value="yes" required> Yes
+    <input type="radio" name="drives_to_work" value="no" required> No
+    <label for="miles">Miles driven per day:</label>
+    <input type="number" id="miles" name="miles">
+    <label for="mpg">Average MPG of your vehicle:</label>
+    <input type="number" id="mpg" name="mpg">
+    <button type="submit">Calculate</button>
+</form>
+{% if carbon_footprint %}
+<p>Your estimated carbon footprint is {{ carbon_footprint }} kg CO2 per day.</p>
+{% endif %}
+{% endblock %}
