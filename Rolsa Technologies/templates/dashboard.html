@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Dashboard</h2>
+<nav>
+    <a href="{{ url_for('information') }}">Information</a>
+    <a href="{{ url_for('book_consultation') }}">Book Consultation</a>
+    <a href="{{ url_for('carbon_footprint') }}">Carbon Footprint</a>
+</nav>
+{% endblock %}

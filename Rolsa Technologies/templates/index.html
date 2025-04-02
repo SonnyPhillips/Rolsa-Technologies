@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="dashboard-container">
+    <nav>
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('book_consultation') }}">Book Consultation</a>
+        <a href="{{ url_for('carbon_footprint') }}">Carbon Footprint</a>
+    </nav>
+</div>
+
+<style>
+	pre{
+		text-align: center;
+		font-size: large;
+		font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	}
+
+
+</style>
+
+<!-- Slideshow container -->
+<section id="image-carousel" class="splide" aria-label="Beautiful Images">
+  <div class="splide__track">
+		<ul class="splide__list">
+			<li class="splide__slide">
+				<img src="/workspaces/exam/Rolsa Technologies/static/image1.jpg" alt="Wind power">
+			</li>
+			<li class="splide__slide">
+				<img src="/workspaces/exam/Rolsa Technologies/static/image2.jpg" alt="Solar power">
+			</li>
+			<li class="splide__slide">
+				<img src="/workspaces/exam/Rolsa Technologies/static/image3.jpg" alt="Tidal power">
+			</li>
+			<li class="splide__slide">
+				<img src="/workspaces/exam/Rolsa Technologies/static/image4.jpg" alt="Geothermal energy">
+			</li>
+		</ul>
+  </div>
+</section>
+<body>
+  
+
+	<h1>Living a green life</h1>
+	<hr>
+	<pre>
+		Green energy has been making amazing leaps in recent years:
+		From ground breaking tech such as: Turbineless wind farms to
+		Crystal layered solar panels, green energy is accelerating at an
+		immense rate. 
+	</pre>
+	<script>
+    	new Splide( '#image-carousel' ).mount();
+  	</script>
+	<pre>
+		Rolsa Technologies aims to bring the latest advancements in clean energy
+		right to your doorstep so you too can join a greener future
+	</pre>
+
+
+</body>
+
+
+
+{% endblock %}

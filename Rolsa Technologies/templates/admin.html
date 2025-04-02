@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Consultation Data</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        select, button {
+            padding: 5px;
+        }
+    </style>
+</head>
+<h2>Dashboard</h2>
+<nav>
+    <a href="{{ url_for('information') }}">Information</a>
+    <a href="{{ url_for('book_consultation') }}">Book Consultation</a>
+    <a href="{{ url_for('carbon_footprint') }}">Carbon Footprint</a>
+</nav>
+<body>
+    <h1>Consultation Data</h1>
+    <table>
+        <thead>
+            <tr>
+                {% for header in data[0].keys() %}
+                    <th>{{ header }}</th>
+                {% endfor %}
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+                <tr>
+                    {% for key, value in row.items() %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                    <td>
+                        <form action="{{ url_for('admin') }}" method="POST">
+                            <input type="hidden" name="row_id" value="{{ row.get('id') }}">
+                            <select name="authorised">
+                                <option value="Yes" {% if row.get('authorised') == 'Yes' %}selected{% endif %}>Yes</option>
+                                <option value="No" {% if row.get('authorised') == 'No' %}selected{% endif %}>No</option>
+                            </select>
+                            <button type="submit">Update</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

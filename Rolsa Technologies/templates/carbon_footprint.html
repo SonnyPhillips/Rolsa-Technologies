@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Carbon Footprint Calculator</h2>
+<div class="dashboard-container">
+    <nav>
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('book_consultation') }}">Book Consultation</a>
+        <a href="{{ url_for('carbon_footprint') }}">Carbon Footprint</a>
+    </nav>
+</div>
+
+<form method="POST">
+    <label>Do you drive to work?</label>
+    <input type="radio" name="drives_to_work" value="yes" required> Yes
+    <input type="radio" name="drives_to_work" value="no" required> No
+    <label for="miles">Miles driven per day:</label>
+    <input type="number" id="miles" name="miles">
+    <label for="bill_electric">Monthly electric bill average:</label>
+    <input type="number" id="bill_electric" name="bill_electric">
+    <label for="bill_gas">Monthly gas bill average:</label>
+    <input type="number" id="bill_gas" name="bill_gas">    
+    <label>Do you recycle?</label>
+    <input type="radio" name="recycles" value="yes" required> Yes
+    <input type="radio" name="recycles" value="no" required> No
+    <button type="submit">Calculate</button>
+</form>
+{% if carbon_footprint %}
+<p>Your estimated carbon footprint is {{ carbon_footprint }} pounds CO2 per year.</p>
+{% endif %}
+{% endblock %}
