@@ -1,0 +1,100 @@
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+# Sample product data - replace with your actual data
+products = [
+    {
+        "id": 1, 
+        "image": "product1.jpg", 
+        "description": "High-quality widget with durable construction"
+    },
+    {
+        "id": 2, 
+        "image": "product2.jpg", 
+        "description": "Premium gadget with advanced features"
+    },
+    {
+        "id": 3, 
+        "image": "product3.jpg", 
+        "description": "Deluxe thingamajig with lifetime warranty"
+    }
+]
+
+@app.route('/products')
+def show_products():
+    return render_template('products.html', products=products)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .product-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .product-table th {
+            background-color: #f2f2f2;
+            text-align: left;
+            padding: 12px;
+        }
+        .product-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            vertical-align: top;
+        }
+        .product-image {
+            max-width: 200px;
+            max-height: 200px;
+            display: block;
+        }
+        .description-box {
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            border-left: 4px solid #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Our Products</h1>
+    <table class="product-table">
+        <thead>
+            <tr>
+                <th>Product Image</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>
+                    <img src="{{ url_for('static', filename='images/' + product.image) }}" 
+                         alt="Product {{ product.id }}" 
+                         class="product-image">
+                </td>
+                <td>
+                    <div class="description-box">
+                        {{ product.description }}
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
